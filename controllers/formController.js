@@ -1,9 +1,13 @@
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const db = require("../db/queries/user");
+const { validationResult } = require("express-validator");
 
 exports.getSignUp = async (req, res) => {
-    res.render("sign-up-form");
+    res.render("sign-up-form", {
+        errors: [],
+        oldInput: {},
+    });
 };
 
 exports.getLogIn = async (req, res) => {
@@ -11,11 +15,18 @@ exports.getLogIn = async (req, res) => {
 };
 
 exports.postSignUp = async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).render("sign-up-form", {
+            errors: errors.array(),
+            oldInput: req.body,
+        });
+    }
     try {
         const { firstname, lastname, email, password } = req.body;
         const hashedPassword = await bcrypt.hash(password, 10);
         await db.insertUser(firstname, lastname, email, hashedPassword);
-        res.redirect("/");
+        res.redirect("/log-in");
     } catch (error) {
         console.error(error);
         next(error);
@@ -25,7 +36,7 @@ exports.postSignUp = async (req, res, next) => {
 exports.postLogIn = (req, res, next) => {
     passport.authenticate("local", {
         successRedirect: "/",
-        failureRedirect: "/x",
+        failureRedirect: "/log-in",
     })(req, res, next);
 };
 

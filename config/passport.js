@@ -1,6 +1,6 @@
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
-const { getUserByPass, getUserById } = require("../db/queries/user");
+const { getUserByEmail, getUserById } = require("../db/queries/user");
 
 function initialize(passport) {
     passport.use(
@@ -8,7 +8,7 @@ function initialize(passport) {
             { usernameField: "email" },
             async (email, password, done) => {
                 try {
-                    const user = await getUserByPass(email);
+                    const user = await getUserByEmail(email);
 
                     if (!user) {
                         return done(null, false, {

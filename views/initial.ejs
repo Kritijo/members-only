@@ -6,15 +6,19 @@
 </div>
 <div class="container">
   <ul>
-    <% messages.forEach((msg,idx) => { %>
-    <li>
-      <strong><%= msg.title %></strong>: <%= msg.text %>
-      <em>
-        <%= msg.added.toLocaleDateString('en-US', { year: 'numeric', month:
-        'short', day: 'numeric'}) %>
-      </em>
-      <em><%if(user){%> <%= msg.id %><%}%></em>
-    </li>
-    <% }) %>
+    <a href="/view/<%= messages[0].id %>"
+      ><li>
+        <strong><%= messages[0].title %></strong>: <%= messages[0].text %>
+        <em>
+          <%= messages[0].added.toLocaleDateString('en-US', { year: 'numeric',
+          month: 'short', day: 'numeric'}) %>
+        </em>
+        <em><%if(user){%> <%= messages[0].id %><%}%></em>
+      </li></a
+    >
   </ul>
+  <div class="gif">
+    <p>Waiting for you to join in.</p>
+    <img src="wait.webp" />
+  </div>
 </div>

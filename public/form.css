@@ -22,3 +22,11 @@ input:hover,
 input:focus {
   box-shadow: none;
 }
+
+.errors {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}

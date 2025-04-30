@@ -9,11 +9,20 @@
   </head>
   <body>
     <h1><%=msg.title%></h1>
+    <% if (user) { %>
     <h3>— By <em><%= username %></em></h3>
+    <% } %>
     <p><%=msg.text%></p>
     <p>
       <%=msg.added.toLocaleDateString('en-US', { year: 'numeric', month:
       'short', day: 'numeric'})%>
     </p>
+    <% if (user && user.id === msg.user_id) { %>
+    <button
+      onclick="return confirm('Are you sure you want to delete your post?')"
+    >
+      Delete post
+    </button>
+    <% } %>
   </body>
 </html>
