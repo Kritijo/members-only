@@ -5,7 +5,7 @@ async function getUsers() {
     return rows;
 }
 
-async function getUserByPass(email) {
+async function getUserByEmail(email) {
     const { rows } = await pool.query("SELECT * FROM users WHERE email = $1", [
         email,
     ]);
@@ -26,4 +26,4 @@ async function insertUser(firstname, lastname, email, password) {
     );
 }
 
-module.exports = { getUsers, getUserByPass, getUserById, insertUser };
+module.exports = { getUsers, getUserByEmail, getUserById, insertUser };
