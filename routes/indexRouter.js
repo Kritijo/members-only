@@ -11,5 +11,6 @@ indexRouter.post("/log-in", formController.postLogIn);
 indexRouter.get("/log-out", formController.logOut);
 indexRouter.get("/new", indexController.newMessage);
 indexRouter.post("/new", indexController.addMessage);
+indexRouter.get("/view/:id", indexController.viewMessage);
 
 module.exports = indexRouter;

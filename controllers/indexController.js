@@ -18,3 +18,15 @@ exports.addMessage = async (req, res) => {
     await mdb.addMessage(user_id, title, text);
     res.redirect("/");
 };
+
+exports.viewMessage = async (req, res, next) => {
+    try {
+        const id = parseInt(req.params.id);
+        const msg = await mdb.viewMessage(id);
+        const username = await mdb.getUsername(id);
+        res.render("message", { msg, username });
+    } catch (err) {
+        console.log(err);
+        next(err);
+    }
+};
