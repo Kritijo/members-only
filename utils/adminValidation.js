@@ -1,6 +1,6 @@
 const { body } = require("express-validator");
 
-const signUpValidation = [
+const adminValidation = [
     body("creator")
         .trim()
         .isAlpha()
@@ -11,4 +11,4 @@ const signUpValidation = [
         .withMessage("Secret code must have numeric input."),
 ];
 
-module.exports = signUpValidation;
+module.exports = adminValidation;

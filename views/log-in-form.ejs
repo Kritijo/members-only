@@ -22,5 +22,8 @@
       <input id="password" name="password" type="password" required />
       <button type="submit">Log In</button>
     </form>
+    <% if (messages.error) { %>
+    <p class="errors"><%= messages.error[0] %></p>
+    <% } %>
   </body>
 </html>

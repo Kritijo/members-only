@@ -6,12 +6,7 @@ const { validationResult } = require("express-validator");
 exports.getSignUp = async (req, res) => {
     res.render("sign-up-form", {
         errors: [],
-        oldInput: {},
     });
-};
-
-exports.getLogIn = async (req, res) => {
-    res.render("log-in-form");
 };
 
 exports.postSignUp = async (req, res, next) => {
@@ -19,7 +14,6 @@ exports.postSignUp = async (req, res, next) => {
     if (!errors.isEmpty()) {
         return res.status(400).render("sign-up-form", {
             errors: errors.array(),
-            oldInput: req.body,
         });
     }
     try {
@@ -32,10 +26,15 @@ exports.postSignUp = async (req, res, next) => {
     }
 };
 
+exports.getLogIn = async (req, res) => {
+    res.render("log-in-form");
+};
+
 exports.postLogIn = (req, res, next) => {
     passport.authenticate("local", {
         successRedirect: "/",
         failureRedirect: "/log-in",
+        failureFlash: true,
     })(req, res, next);
 };
 

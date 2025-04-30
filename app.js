@@ -6,6 +6,7 @@ const passport = require("passport");
 const initializePassport = require("./config/passport");
 const setupMiddleware = require("./config/middleware");
 const indexRouter = require("./routes/indexRouter");
+const flash = require("express-flash");
 
 const app = express();
 
@@ -18,6 +19,8 @@ app.use(
         saveUninitialized: false,
     })
 );
+
+app.use(flash());
 
 initializePassport(passport);
 app.use(passport.initialize());
