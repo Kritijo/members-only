@@ -28,7 +28,6 @@ exports.postSignUp = async (req, res, next) => {
         await db.insertUser(firstname, lastname, email, hashedPassword);
         res.redirect("/log-in");
     } catch (error) {
-        console.error(error);
         next(error);
     }
 };

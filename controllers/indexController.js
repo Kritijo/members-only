@@ -26,7 +26,6 @@ exports.viewMessage = async (req, res, next) => {
         const username = await mdb.getUsername(id);
         res.render("message", { msg, username });
     } catch (err) {
-        console.log(err);
         next(err);
     }
 };
@@ -37,7 +36,6 @@ exports.deletePost = async (req, res, next) => {
         await mdb.deletePost(id);
         res.redirect("/");
     } catch (err) {
-        console.log(err);
         next(err);
     }
 };

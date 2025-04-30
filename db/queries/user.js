@@ -26,4 +26,14 @@ async function insertUser(firstname, lastname, email, password) {
     );
 }
 
-module.exports = { getUsers, getUserByEmail, getUserById, insertUser };
+async function promoteToAdmin(id) {
+    await pool.query("UPDATE users SET is_admin=TRUE WHERE id=$1", [id]);
+}
+
+module.exports = {
+    getUsers,
+    getUserByEmail,
+    getUserById,
+    insertUser,
+    promoteToAdmin,
+};
