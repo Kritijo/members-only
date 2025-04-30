@@ -1,6 +1,11 @@
 <h1>Welcome <%= user.firstname %>!</h1>
 <div class="form-bttns">
   <a href="/new">Create a post</a>
+  <% if (user.is_admin) { %>
+  <a href="/admin-dashboard">Admin Dashboard</a>
+  <% } else { %>
+  <a href="/admin">Become admin</a>
+  <% } %>
   <a
     href="/log-out"
     onclick="return confirm('Goodbye! Are you sure you want to log out?');"

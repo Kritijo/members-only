@@ -1,8 +1,12 @@
 const { Router } = require("express");
 const indexRouter = Router();
+
 const indexController = require("../controllers/indexController");
 const formController = require("../controllers/formController");
-const signUpValidation = require("../controllers/signUpValidation");
+const adminController = require("../controllers/adminController.js");
+
+const signUpValidation = require("../utils/signUpValidation.js");
+const adminValidation = require("../utils/adminValidation.js");
 
 indexRouter.get("/", indexController.getHome);
 
@@ -19,5 +23,10 @@ indexRouter.post("/new", indexController.addMessage);
 
 indexRouter.get("/view/:id", indexController.viewMessage);
 indexRouter.post("/view/:id/delete", indexController.deletePost);
+
+indexRouter.get("/admin", adminController.getAdminQuiz);
+indexRouter.post("/admin", adminValidation, adminController.postAdminQuiz);
+
+indexRouter.get("/admin-dashboard", adminController.getAdminDashboard);
 
 module.exports = indexRouter;

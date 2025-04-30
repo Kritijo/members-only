@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/root.css" />
+    <link rel="stylesheet" href="/admin-dashboard.css" />
+    <title>Admin Dashboard</title>
+  </head>
+  <body>
+    <table>
+      <caption>
+        All users
+      </caption>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Email</th>
+          <th>Is admin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach(user => { %>
+        <tr>
+          <td><%= user.firstname %> <%= user.lastname %></td>
+          <td><%= user.email %></td>
+          <td><%= user.is_admin %></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>

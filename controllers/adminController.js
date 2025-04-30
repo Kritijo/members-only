@@ -4,7 +4,6 @@ const { validationResult } = require("express-validator");
 exports.getAdminQuiz = async (req, res, next) => {
     res.render("admin-form", {
         errors: [],
-        oldInput: {},
     });
 };
 
@@ -14,7 +13,6 @@ exports.postAdminQuiz = async (req, res, next) => {
     if (!errors.isEmpty()) {
         return res.status(400).render("admin-form", {
             errors: errors.array(),
-            oldInput: req.body,
         });
     }
     try {
@@ -25,9 +23,16 @@ exports.postAdminQuiz = async (req, res, next) => {
             await db.promoteToAdmin(req.user.id);
             return res.redirect("/");
         } else {
-            res.render("/admin-form");
+            return res.status(400).render("admin-form", {
+                errors: [{ msg: "Wrong answer. Try again." }],
+            });
         }
     } catch (err) {
         next(err);
     }
+};
+
+exports.getAdminDashboard = async (req, res, next) => {
+    const users = await require("../db/queries/user.js").getUsers();
+    res.render("admin-dashboard", { users });
 };

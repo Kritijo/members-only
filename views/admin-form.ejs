@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin-quiz</title>
+    <link rel="stylesheet" href="/root.css" />
+    <link rel="stylesheet" href="/form.css" />
+  </head>
+  <body>
+    <h1>Admin quiz</h1>
+    <form action="/admin" method="POST">
+      <label for="creator"> Who created this site? </label>
+      <input id="creator" name="creator" type="text" required />
+      <label for="secretCode"> What is the secret admin code? </label>
+      <input
+        id="secretCode"
+        name="secretCode"
+        placeholder="Hint: birthdate"
+        type="text"
+        required
+      />
+      <button type="submit">Submit</button>
+    </form>
+    <% if (errors && errors.length > 0) { %>
+    <ul class="errors">
+      <% errors.forEach(error => { %>
+      <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+    <% } %>
+  </body>
+</html>
