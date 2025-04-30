@@ -79,6 +79,9 @@ img {
 }
 
 @media (min-width: 800px) {
+  ul {
+    padding: 1rem 3rem;
+  }
   a {
     font-size: 1.1rem;
   }

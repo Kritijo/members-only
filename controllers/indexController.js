@@ -1,10 +1,14 @@
 const db = require("../db/queries/user");
 const mdb = require("../db/queries/messages");
 
-exports.getHome = async (req, res) => {
-    const users = await db.getUsers();
-    const messages = await mdb.getMessages();
-    res.render("index", { users, messages });
+exports.getHome = async (req, res, next) => {
+    try {
+        const users = await db.getUsers();
+        const messages = await mdb.getMessages();
+        res.render("index", { users, messages });
+    } catch (err) {
+        next(err);
+    }
 };
 
 exports.newMessage = async (req, res) => {

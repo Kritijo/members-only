@@ -33,11 +33,11 @@ async function main() {
     const hashedPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD, 10);
 
     const res = await client.query(
-        `INSERT INTO users (firstname, lastname, email, password)
-         VALUES ($1, $2, $3, $4)
+        `INSERT INTO users (firstname, lastname, email, password, is_admin)
+         VALUES ($1, $2, $3, $4, $5)
          ON CONFLICT (email) DO NOTHING
          RETURNING id;`,
-        ["Kit", "jo", process.env.ADMIN_EMAIL, hashedPassword]
+        ["Kit", "jo", process.env.ADMIN_EMAIL, hashedPassword, true]
     );
 
     const userId = res.rows[0]?.id;

@@ -46,3 +46,7 @@ a {
   color: white;
   text-decoration: none;
 }
+
+input {
+  font-size: 16px;
+}

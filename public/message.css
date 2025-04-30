@@ -14,3 +14,9 @@ h1 {
 p {
   padding: 1.5rem;
 }
+
+@media (min-width: 800px) {
+  p {
+    width: 50%;
+  }
+}
