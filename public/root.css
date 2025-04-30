@@ -16,4 +16,33 @@
 
 body {
   min-height: 100vh;
+  background-color: rgb(71, 71, 113);
+  color: white;
+}
+
+button {
+  background-color: cornflowerblue;
+  color: #ffffff;
+  align-self: center;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  width: 150px;
+  cursor: pointer;
+  justify-self: center;
+  transition: background-color, border 0.2s ease;
+  box-shadow: 2px 2px 2px #333;
+}
+button:hover {
+  background-color: inherit;
+  border: 1px solid #ffffff;
+  box-shadow: none;
+}
+
+a {
+  color: white;
+  text-decoration: none;
 }

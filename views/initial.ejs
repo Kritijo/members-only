@@ -1,0 +1,20 @@
+<h1>Members-Only</h1>
+<p>Login or signup to create and post messages!</p>
+<div class="form-bttns">
+  <a href="/sign-up">Sign up</a>
+  <a href="/log-in">Log in</a>
+</div>
+<div class="container">
+  <ul>
+    <% messages.forEach((msg,idx) => { %>
+    <li>
+      <strong><%= msg.title %></strong>: <%= msg.text %>
+      <em>
+        <%= msg.added.toLocaleDateString('en-US', { year: 'numeric', month:
+        'short', day: 'numeric'}) %>
+      </em>
+      <em><%if(user){%> <%= msg.id %><%}%></em>
+    </li>
+    <% }) %>
+  </ul>
+</div>

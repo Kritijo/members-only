@@ -1,0 +1,24 @@
+<h1>Welcome <%= user.firstname %>!</h1>
+<div class="form-bttns">
+  <a href="/new">Create a post</a>
+  <a
+    href="/log-out"
+    onclick="return confirm('Goodbye! Are you sure you want to log out?');"
+    >Log Out</a
+  >
+</div>
+<div class="container">
+  <ul>
+    <% messages.forEach((msg,idx) => { %>
+    <a href="/view/<%=  msg.id %>">
+      <li>
+        <strong><%= msg.title %></strong>: <%= msg.text %>
+        <em>
+          <%= msg.added.toLocaleDateString('en-US', { year: 'numeric', month:
+          'short', day: 'numeric'}) %>
+        </em>
+      </li>
+    </a>
+    <% }) %>
+  </ul>
+</div>

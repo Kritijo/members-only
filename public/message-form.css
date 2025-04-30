@@ -1,0 +1,47 @@
+.back {
+  display: inline-block;
+  cursor: pointer;
+  margin: 20px;
+  text-decoration: underline;
+}
+
+form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 500px;
+  height: 400px;
+  padding: 20px;
+}
+
+label {
+  font-weight: 500;
+}
+
+input,
+#message {
+  border: none;
+  padding: 0.5rem;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+#message {
+  flex: 1;
+  height: 100px;
+  vertical-align: top;
+  text-align: left;
+  padding: 0.5rem;
+  resize: vertical;
+}
+
+@media (max-width: 550px) {
+  form {
+    width: 300px;
+    height: 300px;
+  }
+}

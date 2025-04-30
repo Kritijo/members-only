@@ -1,0 +1,15 @@
+body {
+  background: linear-gradient(#2c2f48 50%, #554f79);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  padding: 2rem;
+}
+
+p {
+  padding: 1.5rem;
+  word-break: break-all;
+}

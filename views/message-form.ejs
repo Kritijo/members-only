@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/root.css" />
+    <link rel="stylesheet" href="/message-form.css" />
+    <title>New Message</title>
+  </head>
+  <body>
+    <a class="back" onclick="history.back()">« Go back</a>
+
+    <form method="POST" action="/new">
+      <label for="title">Title</label>
+      <input
+        id="title"
+        type="text"
+        name="title"
+        placeholder="Add a title to your post"
+        maxlength="100"
+        required
+      />
+      <label for="message">Message</label>
+      <textarea
+        id="message"
+        placeholder="Message..."
+        name="message"
+        maxlength="500"
+        required
+      ></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
