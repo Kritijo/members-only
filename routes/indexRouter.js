@@ -18,5 +18,6 @@ indexRouter.get("/new", indexController.newMessage);
 indexRouter.post("/new", indexController.addMessage);
 
 indexRouter.get("/view/:id", indexController.viewMessage);
+indexRouter.post("/view/:id/delete", indexController.deletePost);
 
 module.exports = indexRouter;

@@ -30,3 +30,14 @@ exports.viewMessage = async (req, res, next) => {
         next(err);
     }
 };
+
+exports.deletePost = async (req, res, next) => {
+    try {
+        const id = parseInt(req.params.id);
+        await mdb.deletePost(id);
+        res.redirect("/");
+    } catch (err) {
+        console.log(err);
+        next(err);
+    }
+};

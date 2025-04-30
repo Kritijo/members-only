@@ -18,11 +18,13 @@
       'short', day: 'numeric'})%>
     </p>
     <% if (user && user.id === msg.user_id) { %>
-    <button
-      onclick="return confirm('Are you sure you want to delete your post?')"
-    >
-      Delete post
-    </button>
+    <form action="/view/<%= msg.id %>/delete" method="POST">
+      <button
+        onclick="return confirm('Are you sure you want to delete your post?')"
+      >
+        Delete post
+      </button>
+    </form>
     <% } %>
   </body>
 </html>

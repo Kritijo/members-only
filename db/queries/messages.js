@@ -27,4 +27,8 @@ async function getUsername(id) {
     return result.rows[0]?.email;
 }
 
-module.exports = { getMessages, addMessage, viewMessage, getUsername };
+async function deletePost(id) {
+    await pool.query("DELETE FROM messages WHERE id=$1", [id]);
+}
+
+module.exports = { getMessages, addMessage, viewMessage, getUsername, deletePost };
