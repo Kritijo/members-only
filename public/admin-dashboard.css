@@ -11,6 +11,7 @@ table {
   width: 90%;
   border-collapse: collapse;
   box-shadow: 0 0px 10px rgba(255, 255, 255, 0.7);
+  word-break: break-all;
 }
 
 caption {
@@ -28,7 +29,6 @@ td {
 th {
   background-color: #755db2;
 }
-
 tr:nth-child(even) {
   background-color: rgb(70, 63, 115);
 }

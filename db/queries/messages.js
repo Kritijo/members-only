@@ -21,14 +21,20 @@ async function viewMessage(id) {
 
 async function getUsername(id) {
     const result = await pool.query(
-        "SELECT email FROM users u JOIN messages m ON u.id=m.user_id WHERE m.id=$1",
+        "SELECT firstname FROM users u JOIN messages m ON u.id=m.user_id WHERE m.id=$1",
         [id]
     );
-    return result.rows[0]?.email;
+    return result.rows[0]?.firstname;
 }
 
 async function deletePost(id) {
     await pool.query("DELETE FROM messages WHERE id=$1", [id]);
 }
 
-module.exports = { getMessages, addMessage, viewMessage, getUsername, deletePost };
+module.exports = {
+    getMessages,
+    addMessage,
+    viewMessage,
+    getUsername,
+    deletePost,
+};
